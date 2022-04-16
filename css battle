@@ -1,0 +1,134 @@
+<div class="background"><div class="small-circle1"></div><div class="small-circle2"></div><div class="small-circle3"></div><div class="inner_rect1"></div><div class="inner_rect2"></div><div class="inner_rect3"></div><div class="inner_rect4"></div><div class="small-circle4"></div><div class="small-circle5"></div><div class="small-circle6"></div><div class="outer_rectangle"><div class="outer_cutout"></div></div></div>
+<style>
+  .background {
+    background: #000;
+    height:100%;
+    width:100%;
+  }
+  .outer_rectangle{
+    height: 120px;
+  	width: 240px;
+    position:absolute;
+    border-radius:20px;
+    top:30%;
+    left:20%;
+  	background-color: #37385A;
+  }
+  .outer_cutout{
+    height: 80px;
+  	width: 200px;
+    position:absolute;
+    border-radius:10px;
+    top:16%;
+    left:8%;
+    background-image: linear-gradient(to right,#9897AE , #C0C3DB , #9897AE);
+  }
+  .small-circle1{
+    border-radius:50%;
+    height:10px;
+    width:10px;
+    background-color:#000;
+    position:absolute;
+    top:125px;
+    left:116px;
+    z-index:10;
+  }
+  .small-circle2{
+    border-radius:50%;
+    height:10px;
+    width:10px;
+    background-color:#000;
+    position:absolute;
+    top:145px;
+    left:116px;
+    z-index:10;
+  }
+  .small-circle3{
+    border-radius:50%;
+    height:10px;
+    width:10px;
+    background-color:#000;
+    position:absolute;
+    top:165px;
+    left:116px;
+    z-index:10;
+  }
+  .inner_rect1{
+    height: 50px;
+  	width: 10px;
+    position:absolute;
+    border-radius:10px;
+    top:125px;
+    left:164px;
+    background-color:#000;
+    z-index:10;
+  }
+  .inner_rect2{
+    height: 50px;
+  	width: 10px;
+    position:absolute;
+    border-radius:10px;
+    top:125px;
+    left:184px;
+    background-color:#000;
+    z-index:10;
+  }
+  .inner_rect3{
+    height: 50px;
+  	width: 10px;
+    position:absolute;
+    border-radius:10px;
+    top:125px;
+    left:204px;
+    background-color:#000;
+    z-index:10;
+  }
+  .inner_rect4{
+    height: 50px;
+  	width: 10px;
+    position:absolute;
+    border-radius:10px;
+    top:125px;
+    left:224px;
+    background-color:#000;
+    z-index:10;
+  }
+  .small-circle4{
+    border-radius:50%;
+    height:10px;
+    width:10px;
+    background-color:#000;
+    position:absolute;
+    top:125px;
+    left:275px;
+    z-index:10;
+  }
+  .small-circle5{
+    border-radius:50%;
+    height:10px;
+    width:10px;
+    background-color:#000;
+    position:absolute;
+    top:145px;
+    left:275px;
+    z-index:10;
+  }
+  .small-circle6{
+    border-radius:50%;
+    height:10px;
+    width:10px;
+    background-color:#000;
+    position:absolute;
+    top:165px;
+    left:275px;
+    z-index:10;
+  }
+</style>
+
+<!-- OBJECTIVE -->
+<!-- Write HTML/CSS in this editor and replicate the given target image in the least code possible. What you write here, renders as it is -->
+
+<!-- SCORING -->
+<!-- The score is calculated based on the number of characters you use (this comment included :P) and how close you replicate the image. Read the FAQS (https://cssbattle.dev/faqs) for more info. -->
+
+<!-- IMPORTANT: remove the comments before submitting -->

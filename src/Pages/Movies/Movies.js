@@ -1,8 +1,10 @@
 import axios from "axios";
 import { Component, React } from "react";
-import {img_200} from "/Users/srvijayganesh/Documents/movies-react-app/src/config.js";
-import '/Users/srvijayganesh/Documents/movies-react-app/src/Pages/Movies/Movies.css';
-import Card from"/Users/srvijayganesh/Documents/movies-react-app/src/components/Card/Card"
+import { img_200 } from "/src/config.js";
+import { page } from "/src/config.js";
+import "/src/Pages/Movies/Movies.css";
+import Card from "/src/components/Card/Card";
+import Pagination from "/src/components/Pagination/Pagination";
 export default class PersonList extends Component {
   state = {
     movies: []
@@ -11,12 +13,11 @@ export default class PersonList extends Component {
   componentDidMount() {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US&page=2`
+        `https://api.themoviedb.org/3/movie/popular?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US&page=${page}`
       )
       .then((res) => {
-        this.setState({ movies:res.data.results});
+        this.setState({ movies: res.data.results });
         console.log(this.state.movies);
-        console.log(this.state.movies[0].backdrop_path);
       });
   }
 
@@ -24,11 +25,25 @@ export default class PersonList extends Component {
     return (
       <>
         <div className="movpage">
-         {this.state.movies.map((item)=>{
-           return <><div className="media"><Card imgsrc={`${img_200}/${item.poster_path}`} name={item.original_title} /></div><br /></>;
-         }  
-         )}
-         </div>
+          {this.state.movies.map((item) => {
+            return (
+              <>
+                <div className="media">
+                  <Card
+                    imgsrc={`${img_200}/${item.poster_path}`}
+                    name={item.original_title}
+                    date={item.release_date}
+                    rate={item.vote_average}
+                  />
+                </div>
+                <br />
+              </>
+            );
+          })}
+        </div>
+        <div className="pagination">
+          <Pagination />
+        </div>
       </>
     );
   }

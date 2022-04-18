@@ -14,12 +14,13 @@ function App() {
       <div className="app">
         <Container>
           <Routes>
-            <Route exact path="/" element={<Movies />}  />
+            <Route exact path="/" element={<Movies />} />
             <Route path="/TvSeries" element={<TvSeries />} />
             <Route path="/Search" element={<Search />} />
           </Routes>
         </Container>
       </div>
+
       <SimpleBottomNavigation />
     </BrowserRouter>
   );

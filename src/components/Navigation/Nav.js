@@ -18,7 +18,7 @@ export default function SimpleBottomNavigation() {
   });
 
   return (
-    <Box sx={{ width: 420 }}>
+    <Box sx={{ width: "100%" }} >
       <BottomNavigation
         showLabels
         value={value}

@@ -14,7 +14,7 @@ function App() {
       <div className="app">
         <Container>
           <Routes>
-            <Route path="/" element={<Movies />} exact />
+            <Route exact path="/" element={<Movies />}  />
             <Route path="/TvSeries" element={<TvSeries />} />
             <Route path="/Search" element={<Search />} />
           </Routes>

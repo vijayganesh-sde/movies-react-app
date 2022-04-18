@@ -1,4 +1,8 @@
-const Search = () => {
-  return <div className="title">Search</div>;
-};
+function Search() {
+    return(
+        <>
+         <div className="header" >Search</div>
+        </>
+    ) ;
+}
 export default Search;

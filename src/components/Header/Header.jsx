@@ -2,7 +2,7 @@ import "./Header.css";
 function Header() {
     return(
         <>
-         <div className="header">🍿FUN ZONE🍿</div>
+         <div className="header" >🍿FUN ZONE🍿</div>
         </>
         
     ) ;

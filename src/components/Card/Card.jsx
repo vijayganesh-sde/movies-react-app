@@ -1,15 +1,16 @@
 import { Component } from "react";
 import "/src/components/Card/Card.css";
+import Badge from "@mui/material/Badge";
 
 class Card extends Component {
   render() {
     return (
       <>
-        <img class="image" src={this.props.imgsrc} />
+        <Badge badgeContent={this.props.rate} color="secondary">
+          <img class="image" src={this.props.imgsrc} />
+        </Badge>
         <span class="title">{this.props.name}</span>
-        <span class="sub_title">
-          {this.props.date} <p class="rate">Rating:{this.props.rate}</p>
-        </span>
+        <span class="sub_title">{this.props.date}</span>
       </>
     );
   }

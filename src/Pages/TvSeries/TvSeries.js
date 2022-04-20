@@ -61,7 +61,6 @@ export default class PersonList extends Component {
                   <Card
                     imgsrc={`${img_200}/${item.poster_path}`}
                     name={item.name}
-                    date={item.first_air_date}
                     rate={item.vote_average}
                   />
                 </div>

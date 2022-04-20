@@ -7,10 +7,13 @@ class Card extends Component {
     return (
       <>
         <Badge badgeContent={this.props.rate} color="secondary">
-          <img class="image" src={this.props.imgsrc} />
+          <img
+            onClick={() => alert("hell")}
+            class="image"
+            src={this.props.imgsrc}
+          />
         </Badge>
         <span class="title">{this.props.name}</span>
-        <span class="sub_title">{this.props.date}</span>
       </>
     );
   }

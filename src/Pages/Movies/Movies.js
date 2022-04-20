@@ -3,6 +3,7 @@ import { Component, React, useState } from "react";
 import { img_200 } from "/src/config.js";
 import "/src/Pages/Movies/Movies.css";
 import Card from "/src/components/Card/Card";
+import Modal from "/src/components/Modal/Modal";
 export default class PersonList extends Component {
   state = {
     movies: [],
@@ -61,7 +62,6 @@ export default class PersonList extends Component {
                   <Card
                     imgsrc={`${img_200}/${item.poster_path}`}
                     name={item.original_title}
-                    date={item.release_date}
                     rate={item.vote_average}
                   />
                 </div>
@@ -90,6 +90,7 @@ export default class PersonList extends Component {
             />
           </a>
         </div>
+        <Modal />
       </>
     );
   }

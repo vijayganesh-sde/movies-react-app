@@ -1,13 +1,34 @@
 import axios from "axios";
 import { Component, React, useState } from "react";
-import { img_200 } from "/src/config.js";
+import { img_200, img_unavail } from "/src/config.js";
 import "/src/Pages/Movies/Movies.css";
 import Card from "/src/components/Card/Card";
-import Modal from "/src/components/Modal/Modal";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Modal from "@mui/material/Modal";
+import Typography from "@mui/material/Typography";
+import Card_cast from "/src/components/Card/Card_cast";
+import InstagramIcon from "@mui/icons-material/Instagram";
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 600,
+  height: 700,
+  bgcolor: "background.paper",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4
+};
 export default class PersonList extends Component {
   state = {
     movies: [],
-    page: 1
+    page: 1,
+    open: false,
+    movie_details: [],
+    movie_cast: [],
+    external_ids: []
   };
 
   componentDidMount() {
@@ -18,6 +39,14 @@ export default class PersonList extends Component {
       .then((res) => {
         this.setState({ movies: res.data.results });
         console.log(this.state.movies);
+      });
+    axios
+      .get(
+        "https://api.themoviedb.org/3/movie/634649/external_ids?api_key=e0f5e5e0e8f0c8afdebf528691360696"
+      )
+      .then((res) => {
+        this.setState({ external_ids: res.data });
+        console.log(this.state.external_ids);
       });
   }
   pageforward() {
@@ -47,8 +76,28 @@ export default class PersonList extends Component {
       )
       .then((res) => {
         this.setState({ movies: res.data.results });
-        console.log(this.state.movies);
       });
+  }
+  handleOpen() {
+    this.setState({ open: true });
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/634649?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US`
+      )
+      .then((res) => {
+        this.setState({ movie_details: res.data });
+        console.log(this.state.movie_details);
+      });
+    axios
+      .get(
+        `https://api.themoviedb.org/3/movie/634649/credits?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US`
+      )
+      .then((res) => {
+        this.setState({ movie_cast: res.data.cast });
+      });
+  }
+  handleClose() {
+    this.setState({ open: false });
   }
 
   render() {
@@ -58,7 +107,7 @@ export default class PersonList extends Component {
           {this.state.movies.map((item) => {
             return (
               <>
-                <div className="media">
+                <div className="media" onClick={() => this.handleOpen()}>
                   <Card
                     imgsrc={`${img_200}/${item.poster_path}`}
                     name={item.original_title}
@@ -69,10 +118,74 @@ export default class PersonList extends Component {
               </>
             );
           })}
+          <div>
+            <Modal
+              open={this.state.open}
+              onClose={() => this.handleClose()}
+              aria-labelledby="modal-modal-title"
+              aria-describedby="modal-modal-description"
+            >
+              <Box sx={style}>
+                <Typography id="modal-modal-title" variant="h6" component="h2">
+                  {this.state.movie_details.original_title}
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  Run Time : {this.state.movie_details.runtime + " Minutes "}
+                </Typography>
+                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                  {this.state.movie_details.overview}
+                  <br />
+                  <br />
+                  Release Date: {this.state.movie_details.release_date}
+                  <br />
+                  <br />
+                  Cast:
+                  <div class="cast">
+                    {this.state.movie_cast.map((item1) => {
+                      if (item1.profile_path == null) {
+                        return (
+                          <>
+                            <div class="media1">
+                              <Card_cast
+                                imgsrc={
+                                  "https://discountdoorhardware.ca/wp-content/uploads/2018/06/profile-placeholder-3.jpg"
+                                }
+                                name={item1.name}
+                              />
+                            </div>
+                          </>
+                        );
+                      } else {
+                        return (
+                          <>
+                            <div class="media1">
+                              <Card_cast
+                                imgsrc={`${img_200}/${item1.profile_path}`}
+                                name={item1.name}
+                              />
+                            </div>
+                          </>
+                        );
+                      }
+                    })}
+                  </div>
+                </Typography>
+                <div>
+                  <a
+                    href={
+                      "https://www.instagram.com/" +
+                      this.state.external_ids.instagram_id
+                    }
+                  >
+                    <InstagramIcon />
+                  </a>
+                </div>
+              </Box>
+            </Modal>
+          </div>
         </div>
         <div className="pagination">
           <a class="prevpage">
-            {" "}
             <input
               type="Submit"
               value="<-- Previous Page"
@@ -90,7 +203,6 @@ export default class PersonList extends Component {
             />
           </a>
         </div>
-        <Modal />
       </>
     );
   }

@@ -2,7 +2,7 @@ import { Component } from "react";
 import "/src/components/Card/Card.css";
 import Badge from "@mui/material/Badge";
 
-class Card extends Component {
+class Movie_disp extends Component {
   render() {
     return (
       <>
@@ -15,4 +15,4 @@ class Card extends Component {
   }
 }
 
-export default Card;
+export default Movie_disp;

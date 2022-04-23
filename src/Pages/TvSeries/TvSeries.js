@@ -1,8 +1,8 @@
 import axios from "axios";
-import { Component, React, useState } from "react";
+import { Component, React } from "react";
 import { img_200 } from "/src/config.js";
 import "/src/Pages/TvSeries/TvSeries.css";
-import Card from "/src/components/Card/Card";
+import Series_disp from "/src/components/Series_display/Series_disp";
 export default class PersonList extends Component {
   state = {
     Series: [],
@@ -12,11 +12,12 @@ export default class PersonList extends Component {
   componentDidMount() {
     axios
       .get(
-        `https://api.themoviedb.org/3/tv/popular?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US&page=${this.state.page}`
+        `https://api.themoviedb.org/3/tv/popular?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US&page=${
+          this.state.page + 3
+        }`
       )
       .then((res) => {
         this.setState({ Series: res.data.results });
-        console.log(this.state.Series);
       });
   }
   pageforward() {
@@ -27,11 +28,12 @@ export default class PersonList extends Component {
     }
     axios
       .get(
-        `https://api.themoviedb.org/3/tv/popular?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US&page=${this.state.page}`
+        `https://api.themoviedb.org/3/tv/popular?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US&page=${
+          this.state.page + 3
+        }`
       )
       .then((res) => {
         this.setState({ Series: res.data.results });
-        console.log(this.state.Series);
       });
   }
   pagebackward() {
@@ -42,11 +44,12 @@ export default class PersonList extends Component {
     }
     axios
       .get(
-        `https://api.themoviedb.org/3/tv/popular?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US&page=${this.state.page}`
+        `https://api.themoviedb.org/3/tv/popular?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US&page=${
+          this.state.page + 3
+        }`
       )
       .then((res) => {
         this.setState({ Series: res.data.results });
-        console.log(this.state.Series);
       });
   }
 
@@ -55,18 +58,35 @@ export default class PersonList extends Component {
       <>
         <div className="movpage">
           {this.state.Series.map((item) => {
-            return (
-              <>
-                <div className="media">
-                  <Card
-                    imgsrc={`${img_200}/${item.poster_path}`}
-                    name={item.name}
-                    rate={item.vote_average}
-                  />
-                </div>
-                <br />
-              </>
-            );
+            if (item.poster_path == null) {
+              return (
+                <>
+                  <div className="media">
+                    <Series_disp
+                      imgsrc={`https://cdn.pixabay.com/photo/2013/07/12/17/22/clapper-board-152088_1280.png`}
+                      name={item.name}
+                      rate={item.vote_average}
+                      id={item.id}
+                    />
+                  </div>
+                  <br />
+                </>
+              );
+            } else {
+              return (
+                <>
+                  <div className="media">
+                    <Series_disp
+                      imgsrc={`${img_200}/${item.poster_path}`}
+                      name={item.name}
+                      rate={item.vote_average}
+                      id={item.id}
+                    />
+                  </div>
+                  <br />
+                </>
+              );
+            }
           })}
         </div>
         <div className="pagination">

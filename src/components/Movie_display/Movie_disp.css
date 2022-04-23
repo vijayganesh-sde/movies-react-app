@@ -1,0 +1,56 @@
+.image {
+  border-radius: 10px;
+  width: 200px;
+  height: 300px;
+}
+.title {
+  width: 100%;
+  padding-top: 10px;
+  text-align: center;
+  font-size: 23px;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+.media:hover {
+  border: 1px solid rgb(255, 253, 253);
+}
+.sub_title {
+  padding-top: 5px;
+}
+.rate {
+  position: relative;
+  bottom: 10px;
+}
+.social_media {
+  width: 150px;
+  margin-left: 200px;
+  padding-top: 30px;
+  display: flex;
+  gap: 40px;
+  justify-content: space-evenly;
+}
+.cast {
+  padding: 4px;
+  width: 100%;
+  height: 235px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: row;
+  gap: 20px;
+}
+.media1 {
+  width: 200px;
+  background-color: rgb(51, 53, 54);
+  border-radius: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 225px;
+}
+.watch {
+  text-decoration: none;
+  font-size: 20px;
+}

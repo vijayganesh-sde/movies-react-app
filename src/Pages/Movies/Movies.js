@@ -9,17 +9,21 @@ import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
 import Card_cast from "/src/components/Card/Card_cast";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import Tooltip from "@mui/material/Tooltip";
 const style = {
   position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 600,
-  height: 700,
+  height: 600,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
-  p: 4
+  p: 4,
+  background: "#303030"
 };
 export default class PersonList extends Component {
   state = {
@@ -28,7 +32,8 @@ export default class PersonList extends Component {
     open: false,
     movie_details: [],
     movie_cast: [],
-    external_ids: []
+    external_ids: [],
+    mov_id: 2
   };
 
   componentDidMount() {
@@ -48,6 +53,7 @@ export default class PersonList extends Component {
         this.setState({ external_ids: res.data });
         console.log(this.state.external_ids);
       });
+    this.func();
   }
   pageforward() {
     if (this.state.page === 10) {
@@ -64,6 +70,7 @@ export default class PersonList extends Component {
         console.log(this.state.movies);
       });
   }
+  func() {}
   pagebackward() {
     if (this.state.page === 1) {
       alert("This is the first page");
@@ -80,9 +87,12 @@ export default class PersonList extends Component {
   }
   handleOpen() {
     this.setState({ open: true });
+    this.state.movies.map((item2) => {
+      this.setState({ mov_id: item2.id });
+    });
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/634649?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US`
+        `https://api.themoviedb.org/3/movie/${this.state.mov_id}?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US`
       )
       .then((res) => {
         this.setState({ movie_details: res.data });
@@ -90,7 +100,7 @@ export default class PersonList extends Component {
       });
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/634649/credits?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US`
+        `https://api.themoviedb.org/3/movie/${this.state.mov_id}/credits?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US`
       )
       .then((res) => {
         this.setState({ movie_cast: res.data.cast });
@@ -105,6 +115,7 @@ export default class PersonList extends Component {
       <>
         <div className="movpage">
           {this.state.movies.map((item) => {
+            console.log(item.id);
             return (
               <>
                 <div className="media" onClick={() => this.handleOpen()}>
@@ -126,13 +137,26 @@ export default class PersonList extends Component {
               aria-describedby="modal-modal-description"
             >
               <Box sx={style}>
-                <Typography id="modal-modal-title" variant="h6" component="h2">
+                <Typography
+                  id="modal-modal-title"
+                  variant="h6"
+                  component="h2"
+                  style={{ color: "#fff" }}
+                >
                   {this.state.movie_details.original_title}
                 </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                <Typography
+                  id="modal-modal-description"
+                  sx={{ mt: 2 }}
+                  style={{ color: "#fff" }}
+                >
                   Run Time : {this.state.movie_details.runtime + " Minutes "}
                 </Typography>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                <Typography
+                  id="modal-modal-description"
+                  sx={{ mt: 2 }}
+                  style={{ color: "#fff" }}
+                >
                   {this.state.movie_details.overview}
                   <br />
                   <br />
@@ -151,6 +175,7 @@ export default class PersonList extends Component {
                                   "https://discountdoorhardware.ca/wp-content/uploads/2018/06/profile-placeholder-3.jpg"
                                 }
                                 name={item1.name}
+                                name1={item1.name}
                               />
                             </div>
                           </>
@@ -170,15 +195,37 @@ export default class PersonList extends Component {
                     })}
                   </div>
                 </Typography>
-                <div>
-                  <a
-                    href={
-                      "https://www.instagram.com/" +
-                      this.state.external_ids.instagram_id
-                    }
-                  >
-                    <InstagramIcon />
-                  </a>
+                <div class="social_media">
+                  <Tooltip title="ctrl / cmd + click to follow">
+                    <a
+                      href={
+                        "https://www.instagram.com/" +
+                        this.state.external_ids.instagram_id
+                      }
+                    >
+                      <InstagramIcon fontSize="large" color="action" />
+                    </a>
+                  </Tooltip>
+                  <Tooltip title="ctrl / cmd + click to follow">
+                    <a
+                      href={
+                        "https://www.facebook.com/" +
+                        this.state.external_ids.facebook_id
+                      }
+                    >
+                      <FacebookIcon fontSize="large" color="action" />
+                    </a>
+                  </Tooltip>
+                  <Tooltip title="ctrl / cmd + click to follow">
+                    <a
+                      href={
+                        "https://www.twitter.com/" +
+                        this.state.external_ids.twitter_id
+                      }
+                    >
+                      <TwitterIcon fontSize="large" color="action" />
+                    </a>
+                  </Tooltip>
                 </div>
               </Box>
             </Modal>
@@ -188,6 +235,7 @@ export default class PersonList extends Component {
           <a class="prevpage">
             <input
               type="Submit"
+              style={{ backgroundColor: "#808080", color: "#fff" }}
               value="<-- Previous Page"
               variant="text"
               onClick={() => this.pagebackward()}
@@ -199,6 +247,7 @@ export default class PersonList extends Component {
               type="Submit"
               value="next page -->"
               variant="text"
+              style={{ backgroundColor: "#909090", color: "#fff" }}
               onClick={() => this.pageforward()}
             />
           </a>

@@ -59,3 +59,10 @@
   width: 150px;
   margin-left: 170px;
 }
+.social_media {
+  width: 150px;
+  margin-left: 200px;
+  padding-top: 30px;
+  display: flex;
+  gap: 40px;
+}

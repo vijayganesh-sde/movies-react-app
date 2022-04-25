@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import Movie_disp from "/src/components/Movie_display/Movie_disp";
 import Card from "/src/components/Card/Card";
 import { img_200 } from "/src/config.js";
+import { TextInput } from "react-native";
 import Series_disp from "/src/components/Series_display/Series_disp";
 class Search extends Component {
   state = {
@@ -94,11 +95,12 @@ class Search extends Component {
     this.setState({ search_results: [] });
     this.setState({ search_ser_results: [] });
     this.state.all_movies.map((item) => {
-      if (
-        item.original_title.includes(
-          document.getElementById("search_input").value
-        )
-      ) {
+      const arr1 = document.getElementById("search_input").value.split(" ");
+      for (var i = 0; i < arr1.length; i++) {
+        arr1[i] = arr1[i].charAt(0).toUpperCase() + arr1[i].slice(1);
+      }
+      const str1 = arr1.join(" ");
+      if (item.original_title.includes(str1)) {
         this.setState((prevState) => ({
           search_results: [
             ...prevState.search_results,
@@ -113,7 +115,12 @@ class Search extends Component {
       }
     });
     this.state.all_series.map((item) => {
-      if (item.name.includes(document.getElementById("search_input").value)) {
+      const arr = document.getElementById("search_input").value.split(" ");
+      for (var i = 0; i < arr.length; i++) {
+        arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+      }
+      const str2 = arr.join(" ");
+      if (item.name.includes(str2)) {
         this.setState((prevState) => ({
           search_ser_results: [
             ...prevState.search_ser_results,
@@ -144,7 +151,11 @@ class Search extends Component {
               helperText=" "
               id="search_input"
               label="Enter Movie or TvSeries"
-              style={{ width: "80%", marginLeft: "8%" }}
+              style={{
+                width: "80%",
+                marginLeft: "8%",
+                textTransform: "capitalize"
+              }}
             />{" "}
             <Button
               variant="outlined"

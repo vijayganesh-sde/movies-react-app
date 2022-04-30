@@ -140,7 +140,11 @@ class Movie_disp extends Component {
                 </div>
               </Typography>
               <div class="social_media">
-                <a class="watch" href={this.state.movie_details.homepage}>
+                <a
+                  class="watch"
+                  href={this.state.movie_details.homepage}
+                  target="_blank"
+                >
                   Watch Now
                 </a>
               </div>

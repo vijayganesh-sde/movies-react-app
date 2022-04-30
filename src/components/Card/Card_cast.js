@@ -9,6 +9,7 @@ class Card_cast extends Component {
         <a
           class="cast_data"
           href={"https://www.google.com/search?q=" + this.props.name}
+          target="_blank"
         >
           <img class="image1" src={this.props.imgsrc} />
           <span class="title1">{this.props.name}</span>

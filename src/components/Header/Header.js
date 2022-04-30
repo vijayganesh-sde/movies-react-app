@@ -55,12 +55,17 @@ export default function Header() {
           </Menu>
         </div>
         <div>
-          <a class="git" href="https://github.com/vijayganesh-sde">
+          <a
+            class="git"
+            href="https://github.com/vijayganesh-sde"
+            target="_blank"
+          >
             <GitHubIcon fontSize="large" color="action" />
           </a>
           <a
             class="linkedin"
             href="https://linkedin.com/in/sr-vijay-ganesh-76b750222/"
+            target="_blank"
           >
             <LinkedInIcon fontSize="large" color="action" />
           </a>

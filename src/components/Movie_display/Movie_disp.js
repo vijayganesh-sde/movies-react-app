@@ -148,6 +148,7 @@ class Movie_disp extends Component {
                       "https://www.instagram.com/" +
                       this.state.external_ids.instagram_id
                     }
+                    target="_blank"
                   >
                     <InstagramIcon fontSize="large" color="action" />
                   </a>
@@ -158,6 +159,7 @@ class Movie_disp extends Component {
                       "https://www.facebook.com/" +
                       this.state.external_ids.facebook_id
                     }
+                    target="_blank"
                   >
                     <FacebookIcon fontSize="large" color="action" />
                   </a>
@@ -168,6 +170,7 @@ class Movie_disp extends Component {
                       "https://www.twitter.com/" +
                       this.state.external_ids.twitter_id
                     }
+                    target="_blank"
                   >
                     <TwitterIcon fontSize="large" color="action" />
                   </a>

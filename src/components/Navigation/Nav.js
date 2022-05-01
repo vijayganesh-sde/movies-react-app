@@ -20,7 +20,7 @@ export default function SimpleBottomNavigation() {
   return (
     <Box>
       <BottomNavigation
-        style={{ backgroundColor: "#808080", width: "100%" }}
+        style={{ backgroundColor: "#252525", width: "100%" }}
         showLabels
         value={value}
         onChange={(event, newValue) => {
@@ -30,17 +30,17 @@ export default function SimpleBottomNavigation() {
         <BottomNavigationAction
           label="Movies"
           icon={<MovieIcon />}
-          style={{ backgroundColor: "#A8A8A8" }}
+          style={{ backgroundColor: "#909090" }}
         />
         <BottomNavigationAction
           label="TV Series"
           icon={<TVIcon />}
-          style={{ backgroundColor: "	#A8A8A8" }}
+          style={{ backgroundColor: "	#909090" }}
         />
         <BottomNavigationAction
           label="Search"
           icon={<SearchIcon />}
-          style={{ backgroundColor: "	#A8A8A8" }}
+          style={{ backgroundColor: "	#909090" }}
         />
       </BottomNavigation>
     </Box>

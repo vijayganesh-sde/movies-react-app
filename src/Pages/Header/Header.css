@@ -9,6 +9,7 @@
   width: 100%;
   height: 70px;
   overflow: hidden;
+  position: sticky;
 }
 #header a {
   float: left;
@@ -28,19 +29,12 @@
   top: 20px;
   left: 40px;
 }
-.dashboard {
-  position: absolute;
-  right: 8%;
-  top: 25px;
-  box-shadow: black;
-}
-.git {
-  position: absolute;
-  right: 2%;
-  top: 25px;
-}
-.linkedin {
-  position: absolute;
-  right: 5%;
-  top: 25px;
+
+.profiles {
+  display: grid;
+  margin-right: 5px;
+  grid-template-columns: auto auto;
+  justify-content: end;
+  gap: 10px;
+  margin-top: 25px;
 }

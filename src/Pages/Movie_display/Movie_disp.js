@@ -17,8 +17,8 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 600,
-  height: 600,
+  width: 500,
+  height: 500,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -74,7 +74,7 @@ class Movie_disp extends Component {
           />
         </Badge>
         <span class="title">{this.props.name}</span>
-        <div>
+        <div class="movie_box">
           <Modal
             open={this.state.open}
             style={{ overflow: "auto" }}

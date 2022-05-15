@@ -28,33 +28,8 @@ export default function Header() {
           <LiveTvIcon fontSize="large" color="action" />
         </a>
         <a class="title_main">Fun Zone</a>
-        <div class="dashboard">
-          <Button
-            id="fade-button"
-            sx={{ color: "white" }}
-            aria-controls={open ? "fade-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClick}
-          >
-            Dashboard
-          </Button>
-          <Menu
-            id="fade-menu"
-            MenuListProps={{
-              "aria-labelledby": "fade-button"
-            }}
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            TransitionComponent={Fade}
-          >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
-          </Menu>
-        </div>
-        <div>
+
+        <div class="profiles">
           <a
             class="git"
             href="https://github.com/vijayganesh-sde"

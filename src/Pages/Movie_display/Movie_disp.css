@@ -54,7 +54,3 @@
   text-decoration: none;
   font-size: 20px;
 }
-.movie_box {
-  -ms-transform: scaleY(1); /* IE 9 */
-  transform: scaleY(2);
-}

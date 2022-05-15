@@ -74,7 +74,7 @@ class Movie_disp extends Component {
           />
         </Badge>
         <span class="title">{this.props.name}</span>
-        <div class="movie_box">
+        <div>
           <Modal
             open={this.state.open}
             style={{ overflow: "auto" }}

@@ -18,8 +18,7 @@ const style = {
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
-  background: "#303030",
-  overflow: "auto"
+  background: "#303030"
 };
 class Movie_disp extends Component {
   state = {

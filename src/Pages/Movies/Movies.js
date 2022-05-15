@@ -1,8 +1,8 @@
 import axios from "axios";
 import { Component, React } from "react";
-import { img_200 } from "/src/config.js";
-import "/src/Pages/Movies/Movies.css";
-import Movie_disp from "/src/components/Movie_display/Movie_disp";
+import { img_200 } from "../config.js";
+import "../Movies/Movies.css";
+import Movie_disp from "../Movie_display/Movie_disp";
 
 export default class MovieList extends Component {
   state = {
@@ -107,8 +107,12 @@ export default class MovieList extends Component {
           <a class="prevpage">
             <input
               type="Submit"
-              style={{ backgroundColor: "#808080", color: "#fff" }}
-              value="<-- Previous Page"
+              style={{
+                backgroundColor: "#808080",
+                color: "#fff",
+                width: "90px"
+              }}
+              value="<-- Previous"
               variant="text"
               onClick={() => this.pagebackward()}
             />
@@ -117,9 +121,13 @@ export default class MovieList extends Component {
           <a class="nxtpage">
             <input
               type="Submit"
-              value="next page -->"
+              value="Next-->"
               variant="text"
-              style={{ backgroundColor: "#909090", color: "#fff" }}
+              style={{
+                backgroundColor: "#909090",
+                color: "#fff",
+                width: "90px"
+              }}
               onClick={() => this.pageforward()}
             />
           </a>

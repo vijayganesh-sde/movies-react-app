@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "/src/components/Card/Card_cast.css";
+import "../Card/Card_cast.css";
 import Tooltip from "@mui/material/Tooltip";
 
 class Card_cast extends Component {

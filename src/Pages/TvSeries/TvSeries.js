@@ -1,8 +1,8 @@
 import axios from "axios";
 import { Component, React } from "react";
-import { img_200 } from "/src/config.js";
-import "/src/Pages/TvSeries/TvSeries.css";
-import Series_disp from "/src/components/Series_display/Series_disp";
+import { img_200 } from "../config.js";
+import "../TvSeries/TvSeries.css";
+import Series_disp from "../Series_display/Series_disp";
 export default class PersonList extends Component {
   state = {
     Series: [],
@@ -89,21 +89,31 @@ export default class PersonList extends Component {
             }
           })}
         </div>
-        <div className="pagination">
-          <a class="prevpage">
+        <div className="pagination1">
+          <a class="prevpage1">
             {" "}
             <input
+              style={{
+                backgroundColor: "#808080",
+                color: "#fff",
+                width: "90px"
+              }}
               type="Submit"
-              value="<-- Previous Page"
+              value="<-- Previous"
               variant="text"
               onClick={() => this.pagebackward()}
             />
           </a>
-          <a class="pageno">Page : {this.state.page}</a>
-          <a class="nxtpage">
+          <a class="pageno1">Page : {this.state.page}</a>
+          <a class="nxtpage1">
             <input
+              style={{
+                backgroundColor: "#808080",
+                color: "#fff",
+                width: "90px"
+              }}
               type="Submit"
-              value="next page -->"
+              value="Next -->"
               variant="text"
               onClick={() => this.pageforward()}
             />

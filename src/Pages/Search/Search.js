@@ -1,14 +1,14 @@
 import axios from "axios";
-import "/src/Pages/Search/Search.css";
+import "../Search/Search.css";
 import { Component, React } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Movie_disp from "/src/components/Movie_display/Movie_disp";
-import Card from "/src/components/Card/Card";
-import { img_200 } from "/src/config.js";
+import Movie_disp from "../Movie_display/Movie_disp";
+import Card from "../Card/Card";
+import { img_200 } from "../config.js";
 import { TextInput } from "react-native";
-import Series_disp from "/src/components/Series_display/Series_disp";
+import Series_disp from "../Series_display/Series_disp";
 class Search extends Component {
   state = {
     movies: [],

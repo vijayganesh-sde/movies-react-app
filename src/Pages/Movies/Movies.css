@@ -18,20 +18,7 @@
   border-radius: 15px;
   gap: 12px;
 }
-.prevpage {
-  position: relative;
-  left: 5%;
-}
-.nxtpage {
-  position: relative;
-  left: 70%;
-}
-.pageno {
-  position: relative;
-  left: 36%;
-  color: whitesmoke;
-  font-size: 25px;
-}
+
 .cast {
   padding: 4px;
   width: 100%;
@@ -65,4 +52,17 @@
   padding-top: 30px;
   display: flex;
   gap: 40px;
+}
+
+.pagination {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 45px;
+  justify-content: center;
+  padding-top: 40px;
+}
+.pageno {
+  font-family: fantasy;
+  font-style: oblique;
+  font-size: 25px;
 }

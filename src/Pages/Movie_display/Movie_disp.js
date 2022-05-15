@@ -1,12 +1,17 @@
 import { Component } from "react";
-import "/src/components/Movie_display/Movie_disp.css";
+import "../Movie_display/Movie_disp.css";
 import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import axios from "axios";
-import { img_200 } from "/src/config.js";
+import { img_200, img_unavail } from "../config.js";
 import Modal from "@mui/material/Modal";
 import Typography from "@mui/material/Typography";
-import Card_cast from "/src/components/Card/Card_cast";
+import Card_cast from "../Card/Card_cast";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import Tooltip from "@mui/material/Tooltip";
 const style = {
   position: "absolute",
   top: "50%",
@@ -23,30 +28,33 @@ const style = {
 };
 class Movie_disp extends Component {
   state = {
+    movies: [],
+    page: 1,
     open: false,
     movie_details: [],
     movie_cast: [],
-    external_ids: []
+    external_ids: [],
+    mov_id: 2
   };
   handleOpen() {
     this.setState({ open: true });
     axios
       .get(
-        `https://api.themoviedb.org/3/tv/${this.props.id}?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US`
+        `https://api.themoviedb.org/3/movie/${this.props.id}?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US`
       )
       .then((res) => {
         this.setState({ movie_details: res.data });
       });
     axios
       .get(
-        `https://api.themoviedb.org/3/tv/${this.props.id}/credits?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US`
+        `https://api.themoviedb.org/3/movie/${this.props.id}/credits?api_key=e0f5e5e0e8f0c8afdebf528691360696&language=en-US`
       )
       .then((res) => {
         this.setState({ movie_cast: res.data.cast });
       });
     axios
       .get(
-        `https://api.themoviedb.org/3/tv/${this.props.id}/external_ids?api_key=e0f5e5e0e8f0c8afdebf528691360696`
+        `https://api.themoviedb.org/3/movie/${this.props.id}/external_ids?api_key=e0f5e5e0e8f0c8afdebf528691360696`
       )
       .then((res) => {
         this.setState({ external_ids: res.data });
@@ -55,7 +63,6 @@ class Movie_disp extends Component {
   handleClose() {
     this.setState({ open: false });
   }
-
   render() {
     return (
       <>
@@ -78,21 +85,18 @@ class Movie_disp extends Component {
             <Box sx={style}>
               <Typography
                 id="modal-modal-title"
-                variant="h5"
+                variant="h6"
                 component="h2"
                 style={{ color: "#fff" }}
               >
-                {this.state.movie_details.name}
+                {this.state.movie_details.original_title}
               </Typography>
               <Typography
                 id="modal-modal-description"
                 sx={{ mt: 2 }}
                 style={{ color: "#fff" }}
               >
-                Seasons : {this.state.movie_details.number_of_seasons}
-                <br />
-                Episodes : {this.state.movie_details.number_of_episodes}
-                <br />
+                Run Time : {this.state.movie_details.runtime + " Minutes "}
               </Typography>
               <Typography
                 id="modal-modal-description"
@@ -102,9 +106,7 @@ class Movie_disp extends Component {
                 {this.state.movie_details.overview}
                 <br />
                 <br />
-                Initial Release Date : {this.state.movie_details.first_air_date}
-                <br />
-                Latest Release Date : {this.state.movie_details.last_air_date}
+                Release Date: {this.state.movie_details.release_date}
                 <br />
                 <br />
                 Cast:
@@ -140,13 +142,39 @@ class Movie_disp extends Component {
                 </div>
               </Typography>
               <div class="social_media">
-                <a
-                  class="watch"
-                  href={this.state.movie_details.homepage}
-                  target="_blank"
-                >
-                  Watch Now
-                </a>
+                <Tooltip title="ctrl / cmd + click to follow">
+                  <a
+                    href={
+                      "https://www.instagram.com/" +
+                      this.state.external_ids.instagram_id
+                    }
+                    target="_blank"
+                  >
+                    <InstagramIcon fontSize="large" color="action" />
+                  </a>
+                </Tooltip>
+                <Tooltip title="ctrl / cmd + click to follow">
+                  <a
+                    href={
+                      "https://www.facebook.com/" +
+                      this.state.external_ids.facebook_id
+                    }
+                    target="_blank"
+                  >
+                    <FacebookIcon fontSize="large" color="action" />
+                  </a>
+                </Tooltip>
+                <Tooltip title="ctrl / cmd + click to follow">
+                  <a
+                    href={
+                      "https://www.twitter.com/" +
+                      this.state.external_ids.twitter_id
+                    }
+                    target="_blank"
+                  >
+                    <TwitterIcon fontSize="large" color="action" />
+                  </a>
+                </Tooltip>
               </div>
             </Box>
           </Modal>

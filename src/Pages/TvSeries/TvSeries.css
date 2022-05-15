@@ -17,21 +17,15 @@
   justify-content: space-around;
   border-radius: 15px;
 }
-.pagination {
-  position: relative;
-  top: 30px;
+.pagination1 {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 45px;
+  justify-content: center;
+  padding-top: 40px;
 }
-.prevpage {
-  position: relative;
-  left: 5%;
-}
-.nxtpage {
-  position: relative;
-  left: 70%;
-}
-.pageno {
-  position: relative;
-  left: 36%;
-  color: whitesmoke;
+.pageno1 {
+  font-family: fantasy;
+  font-style: oblique;
   font-size: 25px;
 }

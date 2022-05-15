@@ -6,7 +6,7 @@ import Fade from "@mui/material/Fade";
 import * as React from "react";
 import useState from "react";
 import Redirect from "react-router-dom";
-import Card from "/src/components/Card/Card";
+import Card from "../Card/Card";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 

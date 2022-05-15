@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "/src/components/Card/Card.css";
+import "../Card/Card.css";
 import Badge from "@mui/material/Badge";
 
 class Card extends Component {

@@ -9,6 +9,7 @@ import Card from "../Card/Card";
 import { img_200 } from "../config.js";
 import { TextInput } from "react-native";
 import Series_disp from "../Series_display/Series_disp";
+
 class Search extends Component {
   state = {
     movies: [],
@@ -138,7 +139,7 @@ class Search extends Component {
   render() {
     return (
       <>
-        <div>
+        <div class="main_page">
           <Box
             sx={{
               display: "flex",
@@ -151,14 +152,19 @@ class Search extends Component {
               helperText=" "
               id="search_input"
               label="Enter Movie or TvSeries"
+              variant="outlined"
+              InputLabelProps={{
+                style: { color: "#808080" }
+              }}
               style={{
                 width: "80%",
                 marginLeft: "8%",
-                textTransform: "capitalize"
+                margin: "dense"
               }}
             />{" "}
             <Button
               variant="outlined"
+              style={{ marginTop: "10px" }}
               color="primary"
               class="search_but"
               onClick={() => this.onsearch()}
@@ -166,38 +172,39 @@ class Search extends Component {
               Search
             </Button>
           </Box>
-        </div>
-        <div className="movie_list">
-          {this.state.search_results.map((item) => {
-            return (
-              <>
-                <div className="media2">
-                  <Movie_disp
-                    imgsrc={`${img_200}/${item.poster_path}`}
-                    name={item.original_title}
-                    rate={item.vote_average}
-                    id={item.id}
-                  />
-                </div>
-                <br />
-              </>
-            );
-          })}
-          {this.state.search_ser_results.map((item) => {
-            return (
-              <>
-                <div className="media2">
-                  <Series_disp
-                    imgsrc={`${img_200}/${item.poster_path}`}
-                    name={item.name}
-                    rate={item.vote_average}
-                    id={item.id}
-                  />
-                </div>
-                <br />
-              </>
-            );
-          })}
+
+          <div className="movie_list">
+            {this.state.search_results.map((item) => {
+              return (
+                <>
+                  <div className="media2">
+                    <Movie_disp
+                      imgsrc={`${img_200}/${item.poster_path}`}
+                      name={item.original_title}
+                      rate={item.vote_average}
+                      id={item.id}
+                    />
+                  </div>
+                  <br />
+                </>
+              );
+            })}
+            {this.state.search_ser_results.map((item) => {
+              return (
+                <>
+                  <div className="media2">
+                    <Series_disp
+                      imgsrc={`${img_200}/${item.poster_path}`}
+                      name={item.name}
+                      rate={item.vote_average}
+                      id={item.id}
+                    />
+                  </div>
+                  <br />
+                </>
+              );
+            })}
+          </div>
         </div>
       </>
     );
